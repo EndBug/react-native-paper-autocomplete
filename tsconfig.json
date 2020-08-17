@@ -9,9 +9,9 @@
       "es6"
     ],
     "moduleResolution": "node",
-    "noEmit": true,
+    "declaration": true,
     "strict": true,
-    "target": "esnext"
+    "outDir": "lib"
   },
   "include": [
     "**/*"
