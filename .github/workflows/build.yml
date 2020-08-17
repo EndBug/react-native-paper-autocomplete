@@ -1,6 +1,9 @@
 name: "Build"
 on:
   push:
+    paths:
+      - src
+      - .github/workflows/build.yml
   workflow_dispatch:
 
 jobs:
@@ -16,5 +19,6 @@ jobs:
         with:
           add: lib
           message: "[auto] build: update build"
+          force: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
