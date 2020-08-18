@@ -2,7 +2,7 @@ name: "Build"
 on:
   push:
     paths:
-      - src
+      - src/**
       - .github/workflows/build.yml
   workflow_dispatch:
 
