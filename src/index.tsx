@@ -4,15 +4,15 @@ import { TextInput, Text } from 'react-native-paper'
 
 export interface AutocompleteProps {
   array: string[]
-  initialValue?: string
+  placeholder?: string
   label?: string
   onValueSelected?: (value: string) => void
   onError?: () => void
 }
 
-export default function Autocomplete({ array, initialValue, label, onValueSelected, onError }: AutocompleteProps) {
-  const [text, setText] = useState(initialValue || '')
-  const [selected, setSelected] = useState(initialValue || '')
+export default function Autocomplete({ array, placeholder, label, onValueSelected, onError }: AutocompleteProps) {
+  const [text, setText] = useState(placeholder || '')
+  const [selected, setSelected] = useState(placeholder || '')
   const [error, setError] = useState(true)
 
   const onFocus = () => {
