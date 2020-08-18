@@ -4,7 +4,7 @@ export interface AutocompleteProps {
     array: string[];
     placeholder?: string;
     label?: string;
-    textInputProps?: TextInputProps;
+    textInputProps?: Partial<TextInputProps>;
     onValueSelected?: (value: string) => void;
     onError?: () => void;
 }
