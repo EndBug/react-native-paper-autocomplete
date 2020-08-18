@@ -1,4 +1,4 @@
-name: "Build"
+name: 'Build'
 on:
   push:
     paths:
@@ -13,12 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
       - run: npm install
       - run: npm run build
       - uses: EndBug/add-and-commit@v4
         with:
           add: lib
-          message: "[auto] build: update build"
+          message: '[auto] build: update build'
           force: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
