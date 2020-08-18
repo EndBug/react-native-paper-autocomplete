@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, Platform, ScrollView, TouchableOpacity } from 'react-native'
 import { TextInput, Text } from 'react-native-paper'
+import { TextInputProps } from 'react-native-paper/lib/typescript/src/components/TextInput/TextInput'
 
 export interface AutocompleteProps {
   array: string[]
   placeholder?: string
   label?: string
+  textInputProps?: TextInputProps
   onValueSelected?: (value: string) => void
   onError?: () => void
 }
 
-export default function Autocomplete({ array, placeholder, label, onValueSelected, onError }: AutocompleteProps) {
+export default function Autocomplete({ array, placeholder, label, textInputProps, onValueSelected, onError }: AutocompleteProps) {
   const [text, setText] = useState(placeholder || '')
   const [selected, setSelected] = useState(placeholder || '')
   const [error, setError] = useState(true)
@@ -63,6 +65,7 @@ export default function Autocomplete({ array, placeholder, label, onValueSelecte
         value={text}
         error={error}
         onChangeText={setText}
+        {...(textInputProps || {})}
       />
       {error && showList()}
     </View>
