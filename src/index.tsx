@@ -25,37 +25,6 @@ export default function Autocomplete({ array, placeholder, label, textInputProps
     }
   }
 
-  const showList = () => (
-    <View style={styles.listView}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-        style={styles.list}
-      >
-        {
-          array.filter(str => str.toLowerCase().includes(text.toLowerCase())).map((str, index) => (
-            <TouchableOpacity
-              accessible={true}
-              accessibilityLabel="Autocomplete list"
-              style={styles.onTop}
-              key={index}
-              onPress={
-                () => {
-                  (onValueSelected || defaultCallback)(str)
-                  setSelected(str)
-                  setText(str)
-                  setError(false)
-                }
-              }
-            >
-              <Text style={styles.autoCompleteText}>{str}</Text>
-            </TouchableOpacity>
-          ))
-        }
-      </ScrollView>
-    </View>
-  )
-
   return (
     <View>
       <TextInput
@@ -67,7 +36,34 @@ export default function Autocomplete({ array, placeholder, label, textInputProps
         onChangeText={setText}
         {...(textInputProps || {})}
       />
-      {error && showList()}
+      {error && <View style={styles.listView}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          style={styles.list}
+        >
+          {
+            array.filter(str => str.toLowerCase().includes(text.toLowerCase())).map((str, index) => (
+              <TouchableOpacity
+                accessible={true}
+                accessibilityLabel="Autocomplete list"
+                style={styles.onTop}
+                key={index}
+                onPress={
+                  () => {
+                    (onValueSelected || defaultCallback)(str)
+                    setSelected(str)
+                    setText(str)
+                    setError(false)
+                  }
+                }
+              >
+                <Text style={styles.autoCompleteText}>{str}</Text>
+              </TouchableOpacity>
+            ))
+          }
+        </ScrollView>
+      </View>}
     </View>
   )
 }
