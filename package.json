@@ -30,7 +30,7 @@
   "dependencies": {
     "formik": "^2.1.5",
     "react": "^16.13.1",
-    "react-native": "^0.70.6",
+    "react-native": "^0.72.6",
     "react-native-paper": "^4.0.1"
   }
 }
